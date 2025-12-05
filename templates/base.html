@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AAR Visual Aid</title>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="{{url_for('static', filename='css/style.css')}}"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <div class="d-flex justify-content-between gap-3">
+                <img
+                    class="object-fit-contain float-start mt-2 img-size"
+                    src="{{url_for('static', filename='imgs/cross.png')}}"
+                    alt="coptic cross img"
+                />
+                <h1 class="text-center mt-2">AAR Visual Aid</h1>
+
+                <img
+                    src="{{url_for('static', filename='imgs/aar.jpeg')}}"
+                    alt=""
+                    class="object-fit-contain float-end mt-2 img-size"
+                />
+            </div>
+            {% block content %} {% endblock %}
+        </div>
+    </body>
+</html>

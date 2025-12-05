@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block title %}Inventory - AARVA{% endblock %} {%
+block header_center %} {% endblock %} {% block content %}
+<div class="text-center">
+    <a
+        href="{{ url_for('inventory') }}"
+        class="btn btn-info mt-2 text-white mr-3"
+        >Find An Item</a
+    >
+    <a href="{{ url_for('inventory') }}" class="btn btn-warning mt-2 text-white"
+        >Admin</a
+    >
+</div>
+
+{% endblock %}
