@@ -31,7 +31,13 @@
                     class="object-fit-contain float-end mt-2 img-size"
                 />
             </div>
-            {% block content %} {% endblock %}
+            {% if request.endpoint != 'home' %}
+            <div class="mb-3">
+                <a href="{{ url_for('home') }}" class="btn btn-danger mt-4">
+                    &larr; Back
+                </a>
+            </div>
+            {% endif %} {% block content %} {% endblock %}
         </div>
     </body>
 </html>
