@@ -28,7 +28,7 @@ block header_center %} {% endblock %} {% block content %}
             <tr>
                 <td class="text-center">
                     <img
-                        src="{{ url_for('static', filename='imgs/' + item.image) }}"
+                        src="{{ url_for('static', filename='imgs/' + (item.image if item.image else 'default.jpg')) }}"
                         alt="{{ item.name }}"
                         class="border rounded object-fit-contain"
                         style="width: 100px; height: 100px"
@@ -55,11 +55,13 @@ block header_center %} {% endblock %} {% block content %}
             var rows = document.querySelectorAll("#inventoryTable tbody tr");
 
             rows.forEach(function (row) {
-                var text = row.textContent.toLowerCase();
+                // We grab the text from the row to check if it matches
+                var text = row.innerText.toLowerCase();
+
                 if (text.includes(input)) {
-                    row.style.display = "";
+                    row.style.display = ""; // Show it
                 } else {
-                    row.style.display = "none";
+                    row.style.display = "none"; // Hide it
                 }
             });
         });

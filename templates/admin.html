@@ -3,5 +3,39 @@ header_center %} {% endblock %} {% block content %}
 <div class="text-center">
     <h2>Admin Page</h2>
 </div>
+<form method="POST" enctype="multipart/form-data" class="form-control p-4">
+    <label class="form-label">Item Image</label>
+    <input type="file" class="form-control mb-3" name="image" required />
 
+    <label class="form-label">Item Name</label>
+    <input
+        type="text"
+        class="form-control mb-3"
+        name="name"
+        placeholder="e.g. Coptic Cross"
+        required
+    />
+
+    <label class="form-label">Location</label>
+    <input
+        type="text"
+        class="form-control mb-3"
+        name="location"
+        placeholder="e.g. Cabinet A"
+        required
+    />
+
+    <label class="form-label">Quantity</label>
+    <input
+        type="number"
+        class="form-control mb-3"
+        name="quantity"
+        placeholder="0"
+        required
+    />
+
+    <button type="submit" class="btn btn-success w-100">
+        Add Item to Database
+    </button>
+</form>
 {% endblock %}
