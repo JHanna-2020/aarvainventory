@@ -1,14 +1,21 @@
 {% extends "base.html" %} {% block title %}Inventory - AARVA{% endblock %} {%
 block header_center %} {% endblock %} {% block content %}
-<div class="mt-5 mb-3">
-    <input
-        type="text"
-        id="searchInput"
-        class="form-control"
-        placeholder="Search inventory..."
-    />
-</div>
-
+<form action="{{ url_for('inventory') }}" method="get" class="mt-5 mb-3">
+    <div class="input-group">
+        <input
+            type="text"
+            name="q"
+            id="searchInput"
+            class="form-control"
+            placeholder="Search inventory..."
+            value="{{ request.args.get('q', '') }}"
+        />
+        <button type="submit" class="btn btn-primary" onclick="search()">
+            Search
+        </button>
+    </div>
+</form>
+<script src="{{ url_for('static', filename='js/search.js') }}"></script>
 {% if items %}
 <div class="table-responsive">
     <table
@@ -45,25 +52,4 @@ block header_center %} {% endblock %} {% block content %}
 </div>
 {% else %}
 <p class="mt-4 text-muted">No inventory loaded.</p>
-{% endif %}
-
-<script>
-    document
-        .getElementById("searchInput")
-        .addEventListener("keyup", function () {
-            var input = this.value.toLowerCase();
-            var rows = document.querySelectorAll("#inventoryTable tbody tr");
-
-            rows.forEach(function (row) {
-                // We grab the text from the row to check if it matches
-                var text = row.innerText.toLowerCase();
-
-                if (text.includes(input)) {
-                    row.style.display = ""; // Show it
-                } else {
-                    row.style.display = "none"; // Hide it
-                }
-            });
-        });
-</script>
-{% endblock %}
+{% endif %} {% endblock %}

@@ -38,4 +38,28 @@ header_center %} {% endblock %} {% block content %}
         Add Item to Database
     </button>
 </form>
-{% endblock %}
+{% endblock %} {% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %} {% for category, message in messages %}
+<div
+    class="alert alert-{{ category }} alert-dismissible fade show"
+    role="alert"
+    id="flash-message"
+>
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endfor %} {% endif %} {% endwith %}
+
+<script>
+    // Auto-dismiss flash message after 2 seconds
+    setTimeout(function () {
+        var flashMessage = document.getElementById("flash-message");
+        if (flashMessage) {
+            flashMessage.style.transition = "opacity 0.5s";
+            flashMessage.style.opacity = "0";
+            setTimeout(function () {
+                flashMessage.remove();
+            }, 500);
+        }
+    }, 2000);
+</script>
